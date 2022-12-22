@@ -3,7 +3,7 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 env:
   DAY_OF_WEEK: Monday
-  API_NAME: PetStore
+  API_NAME: PetStore_2
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
