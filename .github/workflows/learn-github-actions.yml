@@ -3,13 +3,14 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 env:
   DAY_OF_WEEK: Monday
+  API_NAME: PetStore
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run Build Script
-        run: sh ./bin/build.sh PetStore
+        run: sh ./bin/build.sh $API_NAME
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: |
