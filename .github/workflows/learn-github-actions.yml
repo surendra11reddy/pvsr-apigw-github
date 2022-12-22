@@ -7,5 +7,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run Build Script
-        run: ./.github/scripts/uploadapi.sh
-        shell: bash
+        run: ./bin/build.sh
