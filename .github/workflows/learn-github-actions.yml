@@ -1,6 +1,8 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
+env:
+  DAY_OF_WEEK: Monday
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
@@ -10,5 +12,10 @@ jobs:
         run: sh ./bin/build.sh
           echo Say it Loudlyyyyyyyyyyyy "$Greetings"
         env:
-          Greetings: Hello world
+          Greetings: Hello world 
+      - name: "Say Hello Mona it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Monday' }}
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona    
         
