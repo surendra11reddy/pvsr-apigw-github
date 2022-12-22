@@ -12,7 +12,10 @@ jobs:
 #        run: sh ./bin/build.sh
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
-        run: echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
+        run: |
+          echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
+          echo "$First_Name, How are you doing"
+          echo "$First_Name, Are you employed??"
         env:
           First_Name: Mona 
           Greetings: Hello
