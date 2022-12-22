@@ -10,12 +10,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Run Build Script
         run: sh ./bin/build.sh
-          echo Say it Loudlyyyyyyyyyyyy "$Greetings"
-        env:
-          Greetings: Hello world 
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
         env:
-          First_Name: Mona    
+          First_Name: Mona 
+          Greetings: Hello world
         
