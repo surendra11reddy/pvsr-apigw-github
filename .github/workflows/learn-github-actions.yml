@@ -15,7 +15,7 @@ jobs:
         run: |
           echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
           echo "$First_Name, How are you doing"
-          echo "$First_Name, Are you employed??"
+          echo "$First_Name, Are you employed???"
         env:
           First_Name: Mona 
           Greetings: Hello
