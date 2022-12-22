@@ -4,13 +4,15 @@ on: [push]
 env:
   DAY_OF_WEEK: Monday
   API_NAME: PetStore_2
+  POLICY_NAME: SampleGobalPolicy
+  ASSET_PATH: ./src/policies
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - name: Run Build Script
-        run: sh ./bin/build.sh $API_NAME
+        run: sh ./bin/build.sh $POLICY_NAME $ASSET_PATH
       - name: "Say Hello Mona it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: |
