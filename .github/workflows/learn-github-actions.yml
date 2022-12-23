@@ -8,13 +8,12 @@ jobs:
     runs-on: ubuntu-latest
     if: "contains(github.event.head_commit.message, '[General commit]')"
     steps:
-      - uses: actions/checkout@v3
       - name: "Say Hello Chandrahas it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: |
           echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
           echo "$First_Name, How are you doing"
-          echo "$First_Name, Are you employed??"
+          echo "$First_Name, Are you employed???"
         env:
           First_Name: Chandrahas 
           Greetings: Hello
