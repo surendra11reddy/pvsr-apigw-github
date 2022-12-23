@@ -3,23 +3,18 @@ run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
 env:
   DAY_OF_WEEK: Monday
-  API_NAME: PetStore_2
-  POLICY_NAME: SampleGobalPolicy
-  ASSET_PATH: ./src/policies
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[Deploy Build]')"
+    if: "contains(github.event.head_commit.message, '[General commit]')"
     steps:
       - uses: actions/checkout@v3
-      - name: Run Build Script
-        run: sh ./bin/build.sh $POLICY_NAME $ASSET_PATH
-      - name: "Say Hello Mona it's Monday"
+      - name: "Say Hello Chandrahas it's Monday"
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
         run: |
           echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
           echo "$First_Name, How are you doing"
           echo "$First_Name, Are you employed??"
         env:
-          First_Name: Mona 
+          First_Name: Chandrahas 
           Greetings: Hello
