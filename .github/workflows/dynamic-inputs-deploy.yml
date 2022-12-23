@@ -2,17 +2,17 @@ on:
   workflow_dispatch:
     inputs:
       ASSET_PATH:
-        required: false
+        required: true
         type: string
       POLICY_NAME:
         required: false
         type: string
       API_NAME:
-        required: true
+        required: false
         type: string
       IS_POLICY_BUILD:
         required: true
-        type: boolen
+        type: boolean
       IS_API_BUILD:
         required: true
         type: boolean
