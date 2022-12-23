@@ -9,10 +9,10 @@ on:
         type: string
       ASSET_PATH:
         required: true
-        type: boolean
+        type: string
       IS_POLICY_BUILD:
         required: true
-        type: string
+        type: boolen
       IS_API_BUILD:
         required: true
         type: boolean
