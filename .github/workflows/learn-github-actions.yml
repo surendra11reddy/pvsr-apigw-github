@@ -10,6 +10,7 @@ jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v3
       - name: Run Build Script
         run: sh ./bin/build.sh $POLICY_NAME $ASSET_PATH
       - name: "Say Hello Mona it's Monday"
