@@ -1,0 +1,26 @@
+on:
+  workflow_dispatch:
+    inputs:
+      API_NAME:
+        required: false
+        type: string
+      POLICY_NAME:
+        required: false
+        type: string
+      ASSET_PATH:
+        required: true
+        type: boolean
+      IS_POLICY_BUILD:
+        required: true
+        type: string
+      IS_API_BUILD:
+        required: true
+        type: boolean
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ inputs.IS_API_BUILD }}
+    steps:
+      - name: Deploy API build to target
+        run: sh curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=apis,applications,policies,policyactions,aliases&fixingMissingVersions=true"
