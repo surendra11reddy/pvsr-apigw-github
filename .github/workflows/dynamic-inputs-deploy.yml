@@ -1,3 +1,4 @@
+name: dynamic-inputs-deploy
 on:
   workflow_dispatch:
     inputs:
