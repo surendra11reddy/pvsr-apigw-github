@@ -1,6 +1,4 @@
 name: dynamic-inputs-deploy
-env:
-  apigw-url: https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=apis,applications,policies,policyactions,aliases&fixingMissingVersions=true
 
 on:
   workflow_dispatch:
@@ -20,6 +18,9 @@ on:
       IS_API_BUILD:
         required: true
         type: boolean
+
+env:
+  apigw-url: https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=apis,applications,policies,policyactions,aliases&fixingMissingVersions=true
 
 jobs:
   deploy:
