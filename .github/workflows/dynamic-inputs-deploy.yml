@@ -29,7 +29,7 @@ jobs:
         id: config
         uses: ./src/configurations/
         with:
-          file: 'myConfigs.yaml'
+          file: './myConfigs.yaml'
           key-path: '["apigw-url"]'
       - name: Deploy API build to target
         run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{steps.config.outputs.apigw-url}}"
