@@ -27,4 +27,4 @@ jobs:
       - uses: actions/checkout@v3
       - uses: ./src/configurations/myConfigs.yaml
       - name: Deploy API build to target
-        run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{dev.apigw-url}}"
+        run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{ dev.apigw-url }}"
