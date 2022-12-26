@@ -1,4 +1,5 @@
 name: dynamic-inputs-deploy
+
 on:
   workflow_dispatch:
     inputs:
@@ -24,5 +25,6 @@ jobs:
     if: ${{ inputs.IS_API_BUILD }}
     steps:
       - uses: actions/checkout@v3
+      - uses: ./src/configurations/myConfigs.yaml
       - name: Deploy API build to target
-        run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=apis,applications,policies,policyactions,aliases&fixingMissingVersions=true"
+        run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{my-configurations.dev.apigw-url}}"
