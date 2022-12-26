@@ -26,6 +26,9 @@ jobs:
     if: ${{ inputs.IS_API_BUILD }}
     steps:
       - uses: actions/checkout@v3
-      - uses: ./src/configurations/myConfigs.yaml
+      - name: "Read file contents"
+        uses: andstor/file-reader-action@v1
+        with:
+          path: "package.json"
       - name: Deploy API build to target
-        run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "$apigw-url"
+        run: curl -u venkatasurendrareddy.pydela@cognizant.com:KavithaChandrahas@11 -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${ steps.read_file.outputs.contents.apigw-url }"
