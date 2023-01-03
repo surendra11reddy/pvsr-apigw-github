@@ -18,6 +18,9 @@ on:
       IS_API_BUILD:
         required: true
         type: boolean
+      IS_CONFIG_BUILD:
+        required: true
+        type: boolean
 
 
 jobs:
