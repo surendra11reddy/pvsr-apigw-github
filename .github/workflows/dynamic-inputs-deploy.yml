@@ -29,13 +29,13 @@ jobs:
     if: ${{ inputs.IS_API_BUILD }}
     steps:
       - uses: actions/checkout@v3
-      - name: "Read file contents"
+      - name: "Read apigw url from config yaml file"
         id: apigw-url
         uses: surendra11reddy/pvsr-apigw-github@main
         with:
           file: './src/configurations/myConfigs.yaml'
           key-path: '["apigw-url"]'
-      - name: "Read file contents"
+      - name: "Read username from config yaml file"
         id: username
         uses: surendra11reddy/pvsr-apigw-github@main
         with:
