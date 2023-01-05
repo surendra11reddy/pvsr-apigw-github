@@ -34,7 +34,7 @@ jobs:
         uses: surendra11reddy/pvsr-apigw-github@main
         with:
           file: './src/configurations/myConfigs.yaml'
-          key-path: '["apigw-url", "username"]'
+          key-path: '["apigw-url"]'
       - name: Read Username from Config
         run: echo ${{ steps.yaml-data.outputs.data }}
       - name: Deploy API build to target
