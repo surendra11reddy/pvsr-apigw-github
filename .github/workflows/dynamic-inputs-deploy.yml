@@ -30,12 +30,16 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: "Read file contents"
-        id: yaml-data
+        id: apigw-url
         uses: surendra11reddy/pvsr-apigw-github@main
         with:
           file: './src/configurations/myConfigs.yaml'
           key-path: '["apigw-url"]'
-      - name: Read Username from Config
-        run: echo ${{ steps.yaml-data.outputs.data }}
+      - name: "Read file contents"
+        id: username
+        uses: surendra11reddy/pvsr-apigw-github@main
+        with:
+          file: './src/configurations/myConfigs.yaml'
+          key-path: '["username"]'
       - name: Deploy API build to target
-        run: curl -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{ steps.yaml-data.outputs.data }}"
+        run: curl -u ${{ steps.username.outputs.data }}:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{ steps.apigw-url.outputs.data }}"
