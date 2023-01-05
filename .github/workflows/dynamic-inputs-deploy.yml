@@ -36,6 +36,6 @@ jobs:
           file: './src/configurations/myConfigs.yaml'
           key-path: '["apigw-url","username"]'
       - name: Read Username from Config
-        run: echo ${{ steps.yaml-data.outputs.data }}
+        run: echo ${{ steps.yaml-data.outputs.apigw-url.data }}
       - name: Deploy API build to target
-        run: curl -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{ steps.yaml-data.outputs.data }}"
+        run: curl -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "${{ steps.yaml-data.outputs.apigw-url.data }}"
