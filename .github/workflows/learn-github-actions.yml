@@ -6,7 +6,7 @@ env:
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
-    if: "contains(github.event.head_commit.message, '[General commit]')"
+    #if: "contains(github.event.head_commit.message, '[General commit]')"
     steps:
       - name: Say Hello Chandrahas it's Monday
         if: ${{ env.DAY_OF_WEEK == 'Monday' }}
