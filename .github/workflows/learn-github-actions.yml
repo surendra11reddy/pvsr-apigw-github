@@ -14,9 +14,9 @@ jobs:
           echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
           echo "$First_Name, How are you doing"
           echo "$First_Name, Are you employed???"
-          zip testFile.zip ./src/apis/testFile -r
+          zip -r testFile.zip . -i ./src/apis/testFile
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: build-artifact
           path: testFile.zip
