@@ -14,7 +14,7 @@ jobs:
           echo "$Greetings $First_Name. Today is $DAY_OF_WEEK!"
           echo "$First_Name, How are you doing"
           echo "$First_Name, Are you employed???"
-          zip -r ./src/apis/testFile ./testFile.zip
+          zip -r ./src/apis/testFile . -i ./testFile.zip
         env:
           First_Name: Chandrahas 
           Greetings: Hello
