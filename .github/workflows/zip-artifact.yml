@@ -1,0 +1,20 @@
+name: zip-artifact
+on: [push]
+env:
+  zipFileName: testFile.zip
+  zipFilePath: ./src/apis/testFile
+  name: my-artifact
+jobs:
+  check-bats-version:
+    runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[zip commit]')"
+    steps:
+      - uses: actions/checkout@v3
+      - run: |
+        mkdir -p ${{ github.workspace }}/artifact
+        echo hello > ${{ github.workspace }}/artifact/world.txt
+      - uses: actions/upload-artifact@v3
+        with:
+          name: ${{ env.name }}-name
+          path: ${{ github.workspace }}/artifact/**/*  
+      
