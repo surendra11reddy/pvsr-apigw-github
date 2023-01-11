@@ -7,6 +7,7 @@ env:
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
+    if: "contains(github.event.head_commit.message, '[General commit]')"
     steps:
       - uses: actions/checkout@v3
       - name: zip the artifact
