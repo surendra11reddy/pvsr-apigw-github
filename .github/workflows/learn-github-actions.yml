@@ -1,19 +1,17 @@
 name: learn-github-actions
 run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push]
+env:
+  zipFileName: testFile.zip
+  zipFilePath: ./src/apis/testFile
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
       - name: zip the artifact
-        run: |
-          mkdir buildArtifacts
-          zip -r ${GITHUB_WORKSPACE}/buildArtifacts/testFile.zip . -i ./src/apis/testFile
+        run: sh ./zipFile.sh $zipFileName $zipFilePath
       - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: build-artifact
-          path: ${GITHUB_WORKSPACE}/buildArtifacts/testFile.zip
-        env:
-          First_Name: Chandrahas 
-          Greetings: Hello
+          path: ${{ zipFileName }}
