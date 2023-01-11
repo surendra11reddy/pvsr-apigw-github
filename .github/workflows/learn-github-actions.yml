@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: zip the artifact
-        run: sh ./zipFile.sh $zipFileName $zipFilePath
+        run: sh ./bin/zipFile.sh $zipFileName $zipFilePath
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
