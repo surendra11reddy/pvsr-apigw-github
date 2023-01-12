@@ -5,8 +5,7 @@ jobs:
   artifacts-zip:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout the source code
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v3
       - name: zip the content file
         run: zip -r testFile.zip ./src/apis/testFile
       - name: Upload the artificat
@@ -14,5 +13,6 @@ jobs:
         with:
           name: build-artifact
           path: ${{ env.zipFileName }}
-        run: ls -r    
+      - name: List the directories    
+        run: ls -r
     
