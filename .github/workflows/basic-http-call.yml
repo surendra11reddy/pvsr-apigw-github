@@ -15,7 +15,7 @@ jobs:
         run: |
           http_response=$(curl -s -o response.txt -w "%{http_code}" ${{ inputs.CALLING_URL }})
           echo "HTTP Response code is $http_response" 
-          if [$http_response! = "200" ]
+          if [$http_response! = "200" ]; then
           echo "Error while calling the ${{ inputs.CALLING_URL }}"
           else
           echo "Positive response while calling ${{ inputs.CALLING_URL }}"
