@@ -9,7 +9,7 @@ jobs:
         run: echo "Initializing http call"
       - name: HTTP Call to validate http response
         run: |
-          http_response=$(curl -s -o response.txt -w "%{http_code}" https://google.com)
+          http_response=$(curl -s -o response.txt -w "%{http_code}" https://www.google.com/)
           echo "HTTP Response code is $http_response" 
 
 
