@@ -19,6 +19,7 @@ jobs:
           echo "Error while calling the ${{ inputs.CALLING_URL }}"
           else
           echo "Positive response while calling ${{ inputs.CALLING_URL }}"
+          fi
 
 
     
