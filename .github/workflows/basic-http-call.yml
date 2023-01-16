@@ -4,7 +4,11 @@ on:
     inputs:
       CALLING_URL:
         required: true
-        type: string
+        type: choice
+        options:
+          - "google.com"
+          - "https://www.google.com/"
+          - "https://google.com/"
 jobs:
   http-response-valid:
     runs-on: ubuntu-latest
