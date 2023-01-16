@@ -1,6 +1,10 @@
 name: basic-http-call
 on:
   workflow_dispatch:
+    inputs:
+      CALLING_URL:
+        required: true
+        type: string
 jobs:
   http-response-valid:
     runs-on: ubuntu-latest
@@ -9,8 +13,12 @@ jobs:
         run: echo "Initializing http call"
       - name: HTTP Call to validate http response
         run: |
-          http_response=$(curl -s -o response.txt -w "%{http_code}" https://www.google.com/)
+          http_response=$(curl -s -o response.txt -w "%{http_code}" ${{ inputs.CALLING_URL }})
           echo "HTTP Response code is $http_response" 
+          if [$http_response! = "200" ]
+          echo "Error while calling the ${{ inputs.CALLING_URL }}"
+          else
+          echo "Positive response while calling ${{ inputs.CALLING_URL }}"
 
 
     
