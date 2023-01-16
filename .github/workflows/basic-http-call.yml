@@ -1,0 +1,16 @@
+name: basic-http-call
+on:
+  workflow_dispatch:
+jobs:
+  http-response-valid:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manual basic-http-call
+        run: echo "Initializing http call"
+      - name: HTTP Call to validate http response
+        run: |
+          http_response=$(curl -s -o response.txt -w "%{http_code}" https://google.com)
+          echo "HTTP Response code is $http_response" 
+
+
+    

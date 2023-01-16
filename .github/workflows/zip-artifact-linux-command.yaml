@@ -5,7 +5,8 @@ jobs:
   artifacts-zip:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out the repo
+        uses: actions/checkout@v3
       - name: zip the content file
         run: zip -r testFile.zip ./src/apis/testFile
       - name: Upload the artificat
