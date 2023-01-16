@@ -5,6 +5,7 @@ on:
       CALLING_URL:
         required: true
         type: choice
+        description: Select the calling url
         options:
           - "google.com"
           - "https://www.google.com/"
