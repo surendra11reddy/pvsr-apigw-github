@@ -7,9 +7,9 @@ on:
         type: choice
         description: Select the calling url
         options:
-          - "google.com"
-          - "https://www.google.com/"
-          - "https://google.com/"
+          - google.com
+          - https://www.google.com/
+          - https://google.com/
 jobs:
   http-response-valid:
     runs-on: ubuntu-latest
