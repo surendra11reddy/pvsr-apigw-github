@@ -45,12 +45,12 @@ jobs:
         run: |
           echo Creating Asset Artifact for ${{ inputs.build_env }} environment with 
           echo ${{ inputs.asset_type }} as Asset Type and Asset Name as ${{ inputs.asset_name }}
-      - name: zip the file and upload to the path
-        run: |
-          mkdir ${{ github.workspace }}/artifact
-          cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}/artifact/
+      #- name: zip the file and upload to the path
+       # run: |
+        #  mkdir ${{ github.workspace }}/testFile
+         # cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}/testFile/
           #zip -j -r testFile.zip ./artifact/*
-          Compress-Archive -Path .\artifact\* -DestinationPath .\testFile.zip
+          #Compress-Archive -Path .\artifact\* -DestinationPath .\testFile.zip
       - name: Create GitHub Release
         id: create-new-release
         uses: actions/create-release@v1
@@ -67,6 +67,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create-new-release.outputs.upload_url }}
-          asset_path: ${{ github.workspace }}/testFile.zip
+          asset_path: ${{ github.workspace }}/src/apis/testFile.zip
           asset_name: testFile.zip
           asset_content_type: application/zip
