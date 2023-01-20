@@ -47,8 +47,9 @@ jobs:
           echo ${{ inputs.asset_type }} as Asset Type and Asset Name as ${{ inputs.asset_name }}
       - name: zip the file and upload to the path
         run: |
-          cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}
-          zip -r testFile.zip ./
+          #mkdir ${{ github.workspace }}/artifact
+          #cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}
+          zip -r testFile.zip ${{ github.workspace }}/src/apis/testFile/*
       - name: Create GitHub Release
         id: create-new-release
         uses: actions/create-release@v1
