@@ -1,0 +1,58 @@
+name: create_wM_api_gateway_asset
+on:
+  workflow_dispatch:
+    inputs:
+      build_env:
+        required: true
+        description: Select Build environment
+        type: choice
+        options:
+          - dev
+          - tst
+          - prd
+      asset_type:
+        required: true
+        description: Select Asset Type
+        type: choice
+        options:
+          - apis
+          - configurations
+      configuration_type:
+        required: false
+        type: choice
+        description: Select Configuration Type if Asset Type is "configurations"
+        options:
+          - 
+          - policies
+          - scopes
+          - administration
+          - aliases
+          - packages
+          - applications
+          - userManagement
+      asset_name:
+        required: true
+        description: Enter Asset Name to be build
+        type: string
+jobs:
+  create-build:
+    name: Create build artifact based on input parameters
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v3
+      - name: Details of Input parameters
+        run: |
+          echo Creating Asset Artifact for ${{ inputs.build_env }} environment with 
+          echo ${{ inputs.asset_type }} as Asset Type and Asset Name as ${{ inputs.asset_name }}
+      - name: zip the file and upload to the path
+        run: zip -r testFile.zip ./src/apis/testFile
+      - name: upload the zip file
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: https://github.com/surendra11reddy/pvsr-apigw-github/tree/main/src/apis/
+          asset_path: ${{ github.workspace }}/testFile.zip
+          asset_name: testFile.zip
+          asset_content_type: application/zip
