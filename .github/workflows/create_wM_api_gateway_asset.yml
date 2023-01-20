@@ -46,7 +46,10 @@ jobs:
           echo Creating Asset Artifact for ${{ inputs.build_env }} environment with 
           echo ${{ inputs.asset_type }} as Asset Type and Asset Name as ${{ inputs.asset_name }}
       - name: zip the file and upload to the path
-        run: zip -r testFile.zip ./src/apis/testFile
+        run: |
+          mkdir ${{ github.workspace }}/artifact
+          cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}/artifact
+          zip -r testFile.zip ./artifact
       - name: Create GitHub Release
         id: create-new-release
         uses: actions/create-release@v1
