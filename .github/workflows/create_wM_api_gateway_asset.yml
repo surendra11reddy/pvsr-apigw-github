@@ -49,8 +49,8 @@ jobs:
         run: |
           mkdir ${{ github.workspace }}/testFile
           cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}/testFile/
-          #cd ./testFile
-          zip -r ../testFile.zip ./testFile/*
+          cd ./testFile
+          zip -r ../testFile.zip *
           #Compress-Archive -Path .\artifact\* -DestinationPath .\testFile.zip
       - name: Create GitHub Release
         id: create-new-release
