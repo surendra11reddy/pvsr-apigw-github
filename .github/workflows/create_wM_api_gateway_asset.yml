@@ -48,7 +48,7 @@ jobs:
       - name: zip the file and upload to the path
         run: |
           cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}
-          zip -r testFile.zip ${{ github.workspace }}
+          zip -r testFile.zip ./
       - name: Create GitHub Release
         id: create-new-release
         uses: actions/create-release@v1
