@@ -45,11 +45,12 @@ jobs:
         run: |
           echo Creating Asset Artifact for ${{ inputs.build_env }} environment with 
           echo ${{ inputs.asset_type }} as Asset Type and Asset Name as ${{ inputs.asset_name }}
-      #- name: zip the file and upload to the path
-       # run: |
-        #  mkdir ${{ github.workspace }}/testFile
-         # cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}/testFile/
-          #zip -j -r testFile.zip ./artifact/*
+      - name: zip the file and upload to the path
+        run: |
+          mkdir ${{ github.workspace }}/testFile
+          cp -r ${{ github.workspace }}/src/apis/testFile/* ${{ github.workspace }}/testFile/
+          cd ./artifact
+          zip -r ../testFile.zip *
           #Compress-Archive -Path .\artifact\* -DestinationPath .\testFile.zip
       - name: Create GitHub Release
         id: create-new-release
