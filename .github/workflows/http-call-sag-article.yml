@@ -14,9 +14,8 @@ jobs:
         run: echo "Initializing http call"
       - name: HTTP Call to validate http response
         run: |
-          curl -sSf ${{ inputs.CALLING_URL }}/rest/apigateway/health > /dev/null 2>&1
-          CS=$?
-          if [ $CS -ne 0 ]
+          http_response=$(curl -sSf ${{ inputs.CALLING_URL }}/rest/apigateway/health > /dev/null 2>&1)
+          if [ $http_response -ne 0 ]
           then
             echo "${{ inputs.CALLING_URL }} is down"
           else
