@@ -1,0 +1,26 @@
+name: http-call-sag-article
+on:
+  workflow_dispatch:
+    inputs:
+      CALLING_URL:
+        required: true
+        type: string
+        description: Select the calling url
+jobs:
+  http-response-valid:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Manual basic-http-call
+        run: echo "Initializing http call"
+      - name: HTTP Call to validate http response
+        run: |
+          curl -sSf ${{ inputs.CALLING_URL }}/rest/apigateway/health > /dev/null 2>&1
+          CS=$?
+          if [ $CS -ne 0 ]
+          then
+            echo "${{ inputs.CALLING_URL }} is down"
+          else
+           echo "${{ inputs.CALLING_URL }} server is up and healthy"
+          fi
+          
+            
