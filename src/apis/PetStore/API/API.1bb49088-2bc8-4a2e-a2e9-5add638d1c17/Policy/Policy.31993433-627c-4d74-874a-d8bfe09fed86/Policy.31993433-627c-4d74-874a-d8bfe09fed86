@@ -1,0 +1,31 @@
+{
+  "id" : "31993433-627c-4d74-874a-d8bfe09fed86",
+  "names" : [ {
+    "value" : "Default Policy for API Pet Store",
+    "locale" : "English"
+  } ],
+  "descriptions" : [ {
+    "value" : "",
+    "locale" : "English"
+  } ],
+  "scope" : {
+    "scopeConditions" : [ ]
+  },
+  "policyEnforcements" : [ {
+    "enforcements" : [ {
+      "enforcementObjectId" : "0191088e-7c5c-4a73-b07e-3c212ceaa852",
+      "order" : "0"
+    } ],
+    "stageKey" : "routing"
+  }, {
+    "enforcements" : [ {
+      "enforcementObjectId" : "1e4b3b10-4840-4f28-bef9-997a020120cd",
+      "order" : "0"
+    } ],
+    "stageKey" : "transport"
+  } ],
+  "policyScope" : "SERVICE",
+  "systemPolicy" : false,
+  "global" : false,
+  "active" : false
+}
