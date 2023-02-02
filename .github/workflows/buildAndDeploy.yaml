@@ -1,0 +1,22 @@
+name: build-and-deploy
+
+on:
+  workflow_dispatch:
+    inputs:
+      API_NAME:
+        required: false
+        type: string
+
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check Out the latest code
+        uses: actions/checkout@v3
+      - name: Deploy API build to target
+        run: |
+          API_DIR=${{ github.workspace }}/src/apis/${{ inputs.API_NAME }}
+          cd $API_DIR && zip -r ${{ github.workspace }}/${{ inputs.API_NAME }}.zip ./* 
+          curl -sS -i -X POST https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true -H "Content-Type:application/zip" -H "Accept:application/json" --data-binary @"${{ github.workspace }}/${{ inputs.API_NAME }}.zip" -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} > /dev/null
+          #curl -u ${{ steps.username.outputs.data }}:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true"
