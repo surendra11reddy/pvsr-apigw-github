@@ -23,4 +23,4 @@ jobs:
           ls -lrt
           echo "*******************************************************"
           #curl -sS -i -X POST https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true -H"Content-Type:application/zip" -H"Accept:application/json" --data-binary @"${{ github.workspace }}/${{ inputs.API_NAME }}.zip" -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} > /dev/null
-          curl -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ github.workspace }}/${{ inputs.API_NAME }}.zip" "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true" -H "Content-Type:application/zip" -H "Accept:application/json"
+          curl -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ github.workspace }}/${{ inputs.API_NAME }}.zip" "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true" -H "Accept:application/json"
