@@ -18,5 +18,9 @@ jobs:
         run: |
           API_DIR=${{ github.workspace }}/src/apis/${{ inputs.API_NAME }}
           cd $API_DIR && zip -r ${{ github.workspace }}/${{ inputs.API_NAME }}.zip ./* 
+          cd ${{ github.workspace }}
+          echo "*******************************************************"
+          ls -lrt
+          echo "*******************************************************"
           curl -sS -i -X POST https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true -H "Content-Type:application/zip" -H "Accept:application/json" --data-binary @"${{ github.workspace }}/${{ inputs.API_NAME }}.zip" -u venkatasurendrareddy.pydela@cognizant.com:${{ secrets.WM_IO_PASSWORD }} > /dev/null
           #curl -u ${{ steps.username.outputs.data }}:${{ secrets.WM_IO_PASSWORD }} -F "data=@${{ inputs.ASSET_PATH }}/${{ inputs.API_NAME }}.zip" "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/archive?overwrite=*&fixingMissingVersions=true"
