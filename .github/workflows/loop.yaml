@@ -1,0 +1,20 @@
+name: loop-variables
+on:
+  workflow_dispatch:
+     inputs:
+      comma_separated_string:
+        required: true
+        description: Input the comma separated input variables
+        type: string
+jobs:
+ loop-over-string:
+   runs-on: ubuntu-latest
+   steps:
+     - name: loop over string list
+       runs: |
+         echo ${{ inputs.comma_separated_string }}
+         variable= ${{ inputs.comma_separated_string }}
+         for i in ${variable//,/ }
+         do
+         echo "$i"
+         done
