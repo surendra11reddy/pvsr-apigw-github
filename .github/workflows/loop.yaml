@@ -13,8 +13,9 @@ jobs:
      - name: loop over string list
        run: |
          echo ${{ inputs.comma_separated_string }}
-         variable= ${{ inputs.comma_separated_string }}
-         for i in ${variable//,/ }
+         variable= "${{ inputs.comma_separated_string }}"
+         IFS=',' read -ra my_array <<< "$variable"
+         for i in "${my_array[@]}"
          do
-         echo "$i" ;
+            echo "$i"
          done
