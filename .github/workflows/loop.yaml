@@ -16,5 +16,5 @@ jobs:
          variable= ${{ inputs.comma_separated_string }}
          for i in ${variable//,/ }
          do
-         echo "$i"
+         echo "$i" ;
          done
