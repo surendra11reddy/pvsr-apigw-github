@@ -13,9 +13,15 @@ jobs:
      - name: loop over string list
        run: |
          echo ${{ inputs.comma_separated_string }}
-         variable= ${{ inputs.comma_separated_string }}
-         IFS=","
-         for i in $variable
+         #variable= ${{ inputs.comma_separated_string }}
+         #IFS=","
+         #for i in $variable
+         #do
+         #   echo "$i"
+         #done
+         variable=abc,def,ghij
+         for i in $(echo $variable | sed "s/,/ /g")
          do
-            echo "$i"
+         # call your procedure/other scripts here below
+         echo "$i"
          done
