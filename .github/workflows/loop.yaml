@@ -13,7 +13,7 @@ jobs:
      - name: loop over string list
        run: |
          echo ${{ inputs.comma_separated_string }}
-         variable= ${{ inputs.comma_separated_string }}
+         variable=${{ inputs.comma_separated_string }}
          #IFS=","
          #for i in $variable
          #do
