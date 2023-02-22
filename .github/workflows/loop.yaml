@@ -11,7 +11,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - name: loop over string list
-       runs: |
+       run: |
          echo ${{ inputs.comma_separated_string }}
          variable= ${{ inputs.comma_separated_string }}
          for i in ${variable//,/ }
