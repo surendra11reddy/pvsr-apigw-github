@@ -26,13 +26,15 @@ jobs:
           
       - name: Set environment variables
         run: |
-          echo "export MY_CREDENTIALS=$MY_CREDENTIALS" >> $GITHUB_ENV
+          echo "export MY_APIGW_USERNAME=$MY_APIGW_USERNAME" >> $GITHUB_ENV
+          echo "export MY_APIGW_PASSWORD=$MY_APIGW_PASSWORD" >> $GITHUB_ENV
 
       - name: Run Postman Collection
         run: |
-          newman run "myCollection_1.postman_collection.json" --env-var MY_CREDENTIALS=$MY_CREDENTIALS -r cli,htmlextra --reporter-htmlextra-export testReports/report.html
+          newman run "myCollection_1.postman_collection.json" --env-var "username=$MY_APIGW_USERNAME" --env-var "password=$MY_APIGW_PASSWORD" -r cli,htmlextra --reporter-htmlextra-export testReports/report.html
         env:
-          MY_CREDENTIALS: ${{ secrets.MY_CREDENTIALS }}
+          MY_APIGW_USERNAME: ${{ secrets.MY_APIGW_USERNAME }}
+          MY_APIGW_PASSWORD: ${{ secrets.MY_APIGW_PASSWORD }}
       
       - name: Upload the results
         uses: actions/upload-artifact@v3
