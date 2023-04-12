@@ -15,19 +15,17 @@ jobs:
 
       - name: Set up Node.js
         uses: actions/setup-node@v2
-        with:
-          node-version: '14.x'
 
       - name: Install dependencies
         run: |
-          npm install -g newman
+          npm install
 
       - name: Run Postman Collection
         run: |
-          newman run ./myCollection.postman_collection.json -r html --reporter-html-export /testReports/report.html
+          newman run ./myCollection.postman_collection.json -r html --reporter-html-export ./report.html
       
       - name: Upload the results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v2
         with:
           name: reports
-          path: testReports
+          path: ./report.html
