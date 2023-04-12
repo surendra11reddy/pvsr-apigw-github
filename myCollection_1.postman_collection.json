@@ -42,12 +42,12 @@
 					"basic": [
 						{
 							"key": "username",
-							"value": "",
+							"value": "{{username}}",
 							"type": "string"
 						},
 						{
 							"key": "password",
-							"value": "",
+							"value": "{{password}}",
 							"type": "string"
 						}
 					]
