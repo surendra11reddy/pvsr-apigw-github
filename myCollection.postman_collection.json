@@ -1,0 +1,83 @@
+{
+	"info": {
+		"_postman_id": "fd205ff1-8746-4eb2-a1be-5a646dd86d1f",
+		"name": "myCollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7523842"
+	},
+	"item": [
+		{
+			"name": "Get all the Alias",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"venkatasurendrareddy.pydela@cognizant.com\");\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "username",
+							"value": "venkatasurendrareddy.pydela@cognizant.com",
+							"type": "string"
+						},
+						{
+							"key": "password",
+							"value": "KavithaChandra@11",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "https://env548989.apigw-aw-us.webmethods.io/rest/apigateway/alias",
+					"protocol": "https",
+					"host": [
+						"env548989",
+						"apigw-aw-us",
+						"webmethods",
+						"io"
+					],
+					"path": [
+						"rest",
+						"apigateway",
+						"alias"
+					]
+				},
+				"description": "The GET method exports an archive. The result of the GET request is an archive in a ZIP format. \n This Method supports exporting API, Application, Alias,Policy, Policy Action, Keystore, Truststore, Kerberos, User, Group, Team, JMS Connection, JNDI Provider, JMS Trigger, Webservice Endpoint Alias, Approval Configuration, Outbound Proxy, URL alias, Plan and Package. \n This GET method can be used for exporting specific type of assets and its optional/soft dependant assets by specifying the asset name and corresponding include options in query parameter. \n For example, for an API, the Application assets (used by the API) are soft dependant of that API. To export the dependant applications of an API use the query param 'include-applications'.If 'include-applications' is not provided, the export archive will contains only the APIs. \n Refer 'Parameters' section for the usage of each include parameters.\n\n\n Use the POST /archive method to export all the assets in API Gateway."
+			},
+			"response": []
+		}
+	]
+}
