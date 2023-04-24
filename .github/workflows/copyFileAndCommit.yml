@@ -1,0 +1,19 @@
+name: copy file and commit
+on:
+  workflow_dispatch:
+jobs:
+ release-create:
+   runs-on: ubuntu-latest
+   steps:
+      - name: Check Out specific commit ID
+        uses: actions/checkout@v3
+      - name: Copy file
+        run: |
+          cd ${{ github.workspace }}/dummy
+          cp -r test.txt test1.txt
+          git add .
+          git config user.name "surendra11reddy"
+          git config user.email “surendra11reddy@gmail.com”
+          git commit -am "Adding changes from workflow"
+          git push
+          
